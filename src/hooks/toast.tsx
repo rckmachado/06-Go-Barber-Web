@@ -21,7 +21,7 @@ interface ToastContextData {
 const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
 const ToastProvider: React.FC = ({ children }) => {
-    const [message, setMessages] = useState<ToastMessage[]>([]);
+    const [messages, setMessages] = useState<ToastMessage[]>([]);
 
     const addToast = useCallback(
         ({ type, title, description }: Omit<ToastMessage, 'id'>) => {
@@ -34,7 +34,7 @@ const ToastProvider: React.FC = ({ children }) => {
                 description,
             };
 
-            setMessages([...message, toast]);
+            setMessages(state => [...messages, toast]);
         },
         [],
     );
@@ -46,7 +46,7 @@ const ToastProvider: React.FC = ({ children }) => {
     return (
         <ToastContext.Provider value={{ addToast, removeToast }}>
             {children}
-            <ToastContainer messages={message} />
+            <ToastContainer messages={messages} />
         </ToastContext.Provider>
     );
 };
