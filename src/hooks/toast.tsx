@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import { FiMessageSquare } from 'react-icons/fi';
 import { uuid } from 'uuidv4';
 
 import ToastContainer from '../components/toasts';
